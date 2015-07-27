@@ -1,6 +1,6 @@
 {
   "name": "mem-common-blockchain",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "In memory common-blockchain object useful for testing.",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/blockai/mem-common-blockchain#readme",
   "dependencies": {
-    "bitcoinjs-lib": "^1.5.7"
+    "bitcoin-tx-hex-to-json": "0.0.1"
   }
 }

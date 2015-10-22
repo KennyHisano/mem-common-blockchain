@@ -60,7 +60,7 @@ module.exports = function (opts) {
   var GetBlock = function (blockIds, callback) {
     var blocks = []
     __blocks.forEach(function (block) {
-      if (blockIds.indexOf(block.blockId)) {
+      if (blockIds.indexOf(block.blockId) > -1) {
         blocks.push(block)
       }
     })

@@ -5,6 +5,7 @@ module.exports = function (opts) {
 
   var __blocks = [{
     blockId: 'genesis',
+    confirmations: 1,
     transactions: [],
     nextblockhash: false,
     height: 0
@@ -46,14 +47,29 @@ module.exports = function (opts) {
 
   var mineBlock = function () {
     var blockId = parseInt(Math.random() * 2e16, 10).toString(16)
+    var transactions = __unminedTxs.slice(0)
+    var blockHeight = __blocks.length
+    var blockTime = +(new Date())
+    transactions.forEach(function (tx) {
+      tx.blockHeight = blockHeight
+      tx.blockheight = blockHeight
+      tx.blockId = blockId
+      tx.blockhash = blockId
+      tx.confirmations = 0
+      tx.blocktime = blockTime
+      tx.blockTime = blockTime
+    })
     var block = {
-      transactions: __unminedTxs.slice(0),
+      transactions: transactions,
       blockId: blockId,
-      height: __blocks.length + 1
+      height: blockHeight
     }
     var prevBlock = __blocks[__blocks.length - 1]
     prevBlock.nextblockhash = blockId
     __blocks.push(block)
+    __blocks.forEach(function (block) {
+      block.confirmations++
+    })
     __unminedTxs = []
   }
 

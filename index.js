@@ -7,7 +7,7 @@ module.exports = function (opts) {
     blockId: 'genesis',
     transactions: [],
     nextblockhash: false,
-    blockHeight: 0
+    height: 0
   }]
 
   var __unminedTxs = []
@@ -49,7 +49,7 @@ module.exports = function (opts) {
     var block = {
       transactions: __unminedTxs.slice(0),
       blockId: blockId,
-      blockHeight: __blocks.length + 1
+      height: __blocks.length + 1
     }
     var prevBlock = __blocks[__blocks.length - 1]
     prevBlock.nextblockhash = blockId
